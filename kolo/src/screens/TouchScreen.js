@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { Fontisto, MaterialIcons } from "@expo/vector-icons";
 
 import Text from '../components/Text';
-// import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from 'expo-status-bar';
 
 
 export default TouchScreen = ({ navigation }) => {
@@ -40,7 +40,7 @@ export default TouchScreen = ({ navigation }) => {
                 Enter Access PIN</Text>
         </PinAccess>
 
-        <StatusBar barstyle="light-content"></StatusBar>
+        <StatusBar barstyle="light-content"/>
 
     </Container>
     );
@@ -78,4 +78,4 @@ const PinAccess = styled.TouchableOpacity`
     justifyContent: center;
 `;
 
-const StatusBar = styled.StatusBar``;
+// const StatusBar = styled.StatusBar``;

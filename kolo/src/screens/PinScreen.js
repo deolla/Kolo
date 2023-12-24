@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 //import { View, Text, StyleSheet } from "react-native";
 import styled from 'styled-components';
 import {Fontisto} from '@expo/vector-icons';
-// import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from 'expo-status-bar';
 
 import Text from '../components/Text';
 import NumberPad from "../components/NumberPad";
@@ -63,7 +63,7 @@ export default PinScreen = ({ navigation }) => {
 
             <NumberPad onPress={PressKey}/>
 
-            <StyledStatusBar barstyle="light-content" />
+            <StatusBar barstyle="light-content" />
 
         </Container>
     );
@@ -105,4 +105,4 @@ const Pin = styled.View`
     background-color: #5196f4;
 `;
 
-const StyledStatusBar = styled.StatusBar``;
+// const StyledStatusBar = styled.StatusBar``;
