@@ -1,15 +1,33 @@
-
-
 import React from 'react';
 import styled from 'styled-components';
-
 import { Fontisto, MaterialIcons } from "@expo/vector-icons";
 
 import Text from '../components/Text';
 import { StatusBar } from 'expo-status-bar';
 
 
-export default TouchScreen = ({ navigation }) => {
+const TouchScreen = ({ navigation }) => {
+    const handleThumbprintAuth = async () => {
+        try {
+            const response = await fetch('http://127.0.0.1:5000/fingerprint_auth', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    thumbprint_data: 'biometric_data',
+                }),
+            });
+            if (response.status === 200) {
+                const result = await response.json();
+                console.log(result.message);
+            }else {
+                console.error('Thumbprint authentication failed');
+            }
+        } catch (err) {
+            console.err('Error during thumbprint authentication:', err);
+        }
+    };
     return (
     <Container>
         <Text center heavy title color="#964ff0" margin='32px 0 0 0' >
@@ -65,7 +83,7 @@ const StyledCircle = styled.View`
     border-radius: 999px;
 `;
 
-const TouchButton = styled.TouchableOpacity`
+const TouchButton = styled.View`
     background-color: #5196f4;
     padding: 8px;
     border-radius: 100px;
@@ -79,3 +97,5 @@ const PinAccess = styled.TouchableOpacity`
 `;
 
 // const StatusBar = styled.StatusBar``;
+
+export default TouchScreen;
