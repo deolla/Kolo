@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/css/login.css">
+  <title>Login</title>
+</head>
+<body>
+  <div class="video-container">
+    <img src="../static/assets/images/kolo2.png" alt="Logo" class="logo">
+    <video autoplay loop muted playsinline>
+      <source src="../static/assets/images/vid.mp4" type="video/mp4">
+    </video>
+    <div class="content">
+      <div class="login-form">
+        {% if firstname %}
+          <h2>Welcome back, {{ firstname }}!</h2>
+        {% else %}
+          <h2>Welcome back!</h2>
+        {% endif %}
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="flashes">
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        <form id="loginForm" method="post" action="">
+
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+          
+          <div class="biometric-checkbox">
+            <input type="checkbox" id="biometric" name="biometric">
+            <label for="biometric">Use Biometric Authentication:</label>
+          </div>
+          <button type="submit">Login</button>
+        </form>
+
+        <div class="forgot-password">
+          <a href="#">Forgot Password?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../static/js/api.js"></script>
+  <script src="../static/js/auth.js"></script>
+  <script src="../static/js/main.js"></script>
+</body>
+</html>
